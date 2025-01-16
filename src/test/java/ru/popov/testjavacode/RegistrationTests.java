@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RegistrationTests {
+class RegistrationTests {
 
     private static final String BASE_URL = "https://reqres.in/api";
 
     @Test
-    public void successfulRegistrationTest() {
+    void successfulRegistrationTest() {
         String requestBody = """
             {
                 \"email\": \"eve.holt@reqres.in\",
@@ -36,7 +36,7 @@ public class RegistrationTests {
     }
 
     @Test
-    public void registrationWithoutPasswordTest() {
+    void registrationWithoutPasswordTest() {
 
         String requestBody = """
             {
