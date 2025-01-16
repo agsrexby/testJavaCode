@@ -11,19 +11,17 @@ public class GetUsersTest {
 
     @Test
     public void getUserListAndValidateEmails() {
-        // Выполнение запроса для получения списка пользователей
+
         Response response = RestAssured.given()
                 .baseUri(BASE_URL)
                 .basePath("/users")
                 .queryParam("page", 1)
                 .get();
 
-        // Проверка статуса ответа
         response.then()
                 .statusCode(200)
                 .body("data", notNullValue());
 
-        // Проверка email пользователей
         response.jsonPath().getList("data.email", String.class).forEach(email -> {
             assertTrue(email.endsWith("@reqres.in"), "Email не имеет окончание @reqres.in: " + email);
         });

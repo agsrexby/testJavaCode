@@ -44,7 +44,6 @@ class RegistrationTests {
             }
         """;
 
-        // Выполнение запроса
         Response response = RestAssured.given()
                 .baseUri(BASE_URL)
                 .basePath("/register")
@@ -52,7 +51,6 @@ class RegistrationTests {
                 .body(requestBody)
                 .post();
 
-        // Проверка статуса ответа
         response.then()
                 .statusCode(400)
                 .body("error", equalTo("Missing password"));
